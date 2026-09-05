@@ -87,7 +87,7 @@ ros2 launch industry_manufacturing_line system_start.launch.py
 
 
 ### 项目结构
-
+```
 AMR-Operate-System
 ├── industry_manufacturing_line/
 │   ├── config/
@@ -132,21 +132,22 @@ AMR-Operate-System
 │   ├── CMakeLists.txt
 │   └── package.xml
 └── vision_perception/
-    ├── launch/
-    │   └── vision_control.launch.py
-    ├── resource/
-    │   └── vision_perception
-    ├── test/
-    │   ├── test_copyright.py
-    │   ├── test_flake8.py
-    │   └── test_pep257.py
-    ├── vision_perception/
-    │   ├── __init__.py
-    │   └── vision_control_node.py*
-    ├── weights/
-    │   └── best.onnx
-    ├── package.xml
-    └── setup.py
+├── launch/
+│   └── vision_control.launch.py
+├── resource/
+│   └── vision_perception
+├── test/
+│   ├── test_copyright.py
+│   ├── test_flake8.py
+│   └── test_pep257.py
+├── vision_perception/
+│   ├── **init**.py
+│   └── vision_control_node.py
+├── weights/
+│   └── best.onnx
+├── package.xml
+└── setup.py
+```
 
 # License
 本项目采用 MIT License 开源
