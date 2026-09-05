@@ -6,7 +6,7 @@
 
 ### 环境要求
 依赖	       版本
-Ubuntu	    2.04 LTS
+Ubuntu	    22.04 LTS
 ROS2	      Humble
 Gazebo	    Classic (Fortress)
 Python	    3.10+
