@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="robot">
+
+  <!-- 机械臂主规划组 -->
+  <group name="arm_group">
+    <joint name="joint_1"/>
+    <joint name="joint_2"/>
+    <joint name="joint_3"/>
+    <link name="arm_base_link"/>
+    <link name="link_1"/>
+    <link name="link_2"/>
+    <link name="link_3"/>
+    <link name="gripper_link"/>
+  </group>
+
+  <!-- 夹爪小组 -->
+  <group name="gripper_group">
+    <link name="gripper_link"/>
+  </group>
+
+  <!-- 末端执行器定义，语法正确 -->
+  <end_effector name="gripper"
+                parent_link="link_3"
+                group="arm_group"/>
+                
+  <!-- 关闭机身与机械臂底座碰撞 -->
+  <disable_collisions link1="arm_base_link" link2="body_link"/>
+
+</robot>

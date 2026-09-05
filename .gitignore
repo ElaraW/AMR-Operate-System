@@ -1,0 +1,30 @@
+# ROS2 build artifacts
+build/
+install/
+log/
+.ros_env/
+
+
+# model weights
+*.pt
+*.pth
+
+# datasets image data
+datasets/color_dataset/images/
+datasets/color_dataset/labels/
+*.cache
+
+# vscode
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+src/vision_perception/weights/*.onnx
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cache

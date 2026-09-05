@@ -1,0 +1,15 @@
+apriltag_node:
+  ros__parameters:
+    image_transport: "raw"
+    family: "16h5"
+    size: 0.1
+    publish_tf: true
+    max_hamming: 10
+    detector:
+      threads: 1
+      decimate: 1.0
+      blur: 0.0
+      refine: 1
+    sharpening: 0.5
+    debug: 0
+    pose_estimation_method: "pnp"

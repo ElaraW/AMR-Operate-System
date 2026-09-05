@@ -1,0 +1,5 @@
+geometry_msgs/Pose target_pose   # 物体在机械臂基座坐标系下的位姿
+string object_id                 
+---
+bool success
+string message

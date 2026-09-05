@@ -1,0 +1,8 @@
+yolo:
+  model_path: "src/industry_manufacturing_line/models/yolov8n_industrial.pt"
+  conf_threshold: 0.6      
+  iou_threshold: 0.45
+  input_topic: "/camera/rgbd_camera/image_raw"
+  output_topic: "/perception/yolo_detections"
+  frame_skip: 0
+  target_classes: ["red", "green", "blue", "yellow"]

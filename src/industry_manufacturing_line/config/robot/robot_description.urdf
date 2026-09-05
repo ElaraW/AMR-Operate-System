@@ -1,0 +1,519 @@
+<?xml version="1.0"?>
+<robot name="robot">
+  <link name="base_footprint" />
+  <joint name="base_foot_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <!-- 底座 -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.06" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.18" length="0.08" />
+      </geometry>
+      <material name="gray">
+        <color rgba="0.4 0.4 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.06" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.18" length="0.08" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 左轮 -->
+  <link name="wheel_left_link">
+    <inertial>
+      <mass value="0.2" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.03" />
+      </geometry>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_left_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="wheel_left_link" />
+    <origin xyz="0.0 0.17 -0.06" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <!-- 右轮 -->
+  <link name="wheel_right_link">
+    <inertial>
+      <mass value="0.2" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.03" />
+      </geometry>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_right_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="wheel_right_link" />
+    <origin xyz="0.0 -0.17 -0.06" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <!-- 前万向轮 -->
+  <link name="caster_front_link">
+    <inertial>
+      <mass value="0.1" />
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.045" />
+      </geometry>
+      <material name="white">
+        <color rgba="0.9 0.9 0.9 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.04" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="caster_front_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="caster_front_link" />
+    <origin xyz="0.16 0 -0.05" rpy="0 0 0" />
+  </joint>
+
+  <!-- 后万向轮 -->
+  <link name="caster_back_link">
+    <inertial>
+      <mass value="0.1" />
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.045" />
+      </geometry>
+      <material name="white">
+        <color rgba="0.9 0.9 0.9 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.045" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="caster_back_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="caster_back_link" />
+    <origin xyz="-0.16 0 -0.05" rpy="0 0 0" />
+  </joint>
+
+  <!-- 机身body -->
+  <link name="body_link">
+    <inertial>
+      <origin xyz="-0.03 0 0.15" rpy="0 0 0" />
+      <mass value="3.5" />
+      <inertia ixx="0.2" ixy="0" ixz="0" iyy="0.2" iyz="0" izz="0.2" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.15" rpy="0 0 0" />
+      <geometry>
+        <box size="0.3 0.3 0.3" />
+      </geometry>
+      <material name="light_grey">
+        <color rgba="0.7 0.7 0.7 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.15" rpy="0 0 0" />
+      <geometry>
+        <box size="0.3 0.3 0.3" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="body_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="body_link" />
+    <origin xyz="0 0 0.15" rpy="0 0 0" />
+  </joint>
+
+  <!-- RGBD相机 link+joint 保留模型，gazebo传感器plugin移到launch，不在urdf写 -->
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.05" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.05" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05" />
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="camera_link" />
+    <origin xyz="0.15 0 0.3" rpy="-1.5708 0 -1.5708" />
+  </joint>
+
+  <!-- 激光雷达 link+joint 保留模型，plugin移到外部，urdf不写插件 -->
+  <link name="base_scan">
+    <inertial>
+      <mass value="0.1" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.05" />
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05" />
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="base_scan_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="base_scan" />
+    <origin xyz="0.15 0 0.7" rpy="0 0 0" />
+  </joint>
+
+  <!-- 轮子摩擦物理 -->
+  <gazebo reference="wheel_left_link">
+    <material>Gazebo/Black</material>
+    <surface>
+      <friction>
+        <ode>
+          <mu>1.2</mu>
+          <mu2>1.2</mu2>
+          <slip1>0.0</slip1>
+          <slip2>0.0</slip2>
+        </ode>
+      </friction>
+      <contact>
+        <ode>
+          <soft_cfm>0.001</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+        </ode>
+      </contact>
+    </surface>
+  </gazebo>
+  <gazebo reference="wheel_right_link">
+    <material>Gazebo/Black</material>
+    <surface>
+      <friction>
+        <ode>
+          <mu>1.2</mu>
+          <mu2>1.2</mu2>
+          <slip1>0.0</slip1>
+          <slip2>0.0</slip2>
+        </ode>
+      </friction>
+      <contact>
+        <ode>
+          <soft_cfm>0.001</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+        </ode>
+      </contact>
+    </surface>
+  </gazebo>
+  <gazebo reference="caster_front_link">
+    <surface>
+      <friction>
+        <ode>
+          <mu>0.02</mu>
+          <mu2>0.02</mu2>
+          <slip1>0.05</slip1>
+          <slip2>0.05</slip2>
+        </ode>
+      </friction>
+      <contact>
+        <ode>
+          <soft_cfm>0.0001</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+        </ode>
+      </contact>
+    </surface>
+  </gazebo>
+  <gazebo reference="caster_back_link">
+    <surface>
+      <friction>
+        <ode>
+          <mu>0.02</mu>
+          <mu2>0.02</mu2>
+          <slip1>0.05</slip1>
+          <slip2>0.05</slip2>
+        </ode>
+      </friction>
+      <contact>
+        <ode>
+          <soft_cfm>0.0001</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+        </ode>
+      </contact>
+    </surface>
+  </gazebo>
+
+  <!-- ==========机械臂完整模型 ========== -->
+  <link name="arm_base_link">
+      <inertial>
+          <origin xyz="0 0 0.07" rpy="0 0 0" />
+          <mass value="0.3" />
+          <inertia ixx="0.0008" ixy="0" ixz="0" iyy="0.0008" iyz="0" izz="0.0008" />
+      </inertial>
+      <visual>
+          <origin xyz="0 0 0.07" rpy="0 0 0" />
+          <geometry>
+              <cylinder radius="0.13" length="0.15" />
+          </geometry>
+          <material name="green">
+              <color rgba="0 0.8 0 1" />
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="0 0 0.07" rpy="0 0 0" />
+          <geometry>
+              <cylinder radius="0.13" length="0.15" />
+          </geometry>
+      </collision>
+  </link>
+  <joint name="arm_base_joint" type="fixed">
+      <parent link="body_link" />
+      <child link="arm_base_link" />
+      <origin xyz="0.05 0 0.18" rpy="0 0 0" />
+  </joint>
+
+
+  <link name="link_1">
+      <inertial>
+          <origin xyz="0 0 0.10" rpy="0 0 0" />
+          <mass value="0.3" />
+          <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+      </inertial>
+      <visual>
+          <origin xyz="0 0 0.10" rpy="0 0 0" />
+          <geometry>
+              <cylinder radius="0.11" length="0.08" />
+          </geometry>
+          <material name="blue">
+              <color rgba="0 0.8 1 1" />
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="0 0 0.10" rpy="0 0 0" />
+          <geometry>
+              <cylinder radius="0.11" length="0.08" />
+          </geometry>
+      </collision>
+  </link>
+  <joint name="joint_1" type="revolute">
+      <parent link="arm_base_link" />
+      <child link="link_1" />
+      <origin xyz="0 0 0.08" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit lower="-3.14" upper="3.14" effort="2.0" velocity="1.0" />
+      <dynamics damping="0.5" friction="0.1" />
+  </joint>
+
+
+  <link name="link_2">
+      <inertial>
+          <origin xyz="0.20 0 0" rpy="0 0 0" />
+          <mass value="0.25" />
+          <inertia ixx="0.002" ixy="0" ixz="0" iyy="0.002" iyz="0" izz="0.0005" />
+      </inertial>
+      <visual>
+          <origin xyz="0.20 0 0" rpy="0 0 0" />
+          <geometry>
+              <box size="0.47 0.11 0.11" />
+          </geometry>
+          <material name="blue">
+              <color rgba="0 0.8 1 1" />
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="0.20 0 0" rpy="0 0 0" />
+          <geometry>
+              <box size="0.47 0.11 0.11" />
+          </geometry>
+      </collision>
+  </link>
+  <joint name="joint_2" type="revolute">
+      <parent link="link_1" />
+      <child link="link_2" />
+      <origin xyz="0 0 0.18" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-2.0" upper="2.0" effort="2.0" velocity="1.0" />
+      <dynamics damping="0.5" friction="0.1" />
+  </joint>
+
+
+  <link name="link_3">
+      <inertial>
+          <origin xyz="0.225 0 0" rpy="0 0 0" />
+          <mass value="0.2" />
+          <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.0003" />
+      </inertial>
+      <visual>
+          <origin xyz="0.225 0 0" rpy="0 0 0" />
+          <geometry>
+              <box size="0.40 0.09 0.09" />
+          </geometry>
+          <material name="green">
+              <color rgba="0 0.8 0 1" />
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="0.225 0 0" rpy="0 0 0" />
+          <geometry>
+              <box size="0.40 0.09 0.09" />
+          </geometry>
+      </collision>
+  </link>
+  <joint name="joint_3" type="revolute">
+      <parent link="link_2" />
+      <child link="link_3" />
+      <origin xyz="0.40 0 0" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit lower="-2.0" upper="2.0" effort="2.0" velocity="1.0" />
+      <dynamics damping="0.5" friction="0.1" />
+  </joint>
+
+
+  <link name="gripper_link">
+      <inertial>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <mass value="0.1" />
+          <inertia ixx="0.0005" ixy="0" ixz="0" iyy="0.0005" iyz="0" izz="0.0005" />
+      </inertial>
+      <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+              <box size="0.08 0.08 0.08" />
+          </geometry>
+          <material name="red">
+              <color rgba="1 0 0 1" />
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+              <box size="0.08 0.08 0.08" />
+          </geometry>
+      </collision>
+  </link>
+
+  <joint name="gripper_joint" type="fixed">
+      <parent link="link_3" />
+      <child link="gripper_link" />
+      <origin xyz="0.425 0 0" rpy="0 0 0" />
+  </joint>
+
+
+    <!-- ========== ros2_control 硬件接口定义 ========== -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    <joint name="joint_1">
+      <command_interface name="position">
+        <param name="min">-3.14</param>
+        <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_2">
+      <command_interface name="position">
+        <param name="min">-2.0</param>
+        <param name="max">2.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_3">
+      <command_interface name="position">
+        <param name="min">-2.0</param>
+        <param name="max">2.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <!-- 机械臂 ros2_control 插件（Ignition Gazebo） -->
+  <gazebo>
+    <plugin filename="/opt/ros/humble/lib/libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+      <parameters>/home/elaraw/AMR-Operate-System/src/industry_manufacturing_line/config/moveit2/arm_controllers.yaml</parameters>
+      <use_sim_time>true</use_sim_time>
+    </plugin>
+  </gazebo>
+
+  <!-- 差速底盘控制器 -->
+  <gazebo>
+    <plugin name="ignition::gazebo::systems::DiffDrive" filename="libignition-gazebo6-diff-drive-system.so">
+      <ros>
+        <namespace>/</namespace>
+        <use_sim_time>true</use_sim_time>
+      </ros>
+      <update_rate>50</update_rate>
+      <left_joint>wheel_left_joint</left_joint>
+      <right_joint>wheel_right_joint</right_joint>
+      <left_wheel_multiplier>1.0</left_wheel_multiplier>
+      <right_wheel_multiplier>1.0</right_wheel_multiplier>
+      <wheel_separation>0.34</wheel_separation>
+      <wheel_diameter>0.1</wheel_diameter>
+      <command_topic>/cmd_vel</command_topic>
+      <robot_base_frame>base_link</robot_base_frame>
+      <publishing_odom>true</publishing_odom>
+      <publishing_odom_tf>true</publishing_odom_tf>
+      <odometry_frame>odom</odometry_frame>
+      <publishing_wheel_tf>false</publishing_wheel_tf>
+      <max_wheel_torque>2.0</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <wheel_torque_limit>1.0</wheel_torque_limit>
+    </plugin>
+  </gazebo>
+
+</robot>
