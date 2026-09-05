@@ -4,7 +4,7 @@
 
 以 RTAB‑Map、YOLOv8、Nav2、MoveIt2 为示例模块，统一数据交互接口，通过状态机实现多任务流程调度。配套自动化测试脚本覆盖 5 类典型工业作业场景，支持持续集成与回归验证。
 
-# 环境要求
+### 环境要求
 依赖	       版本
 Ubuntu	    2.04 LTS
 ROS2	      Humble
@@ -13,7 +13,7 @@ Python	    3.10+
 CMake	      3.22+
 
 
-# 技术栈
+### 技术栈
 
 机器人框架：ROS2 Humble
 
@@ -31,7 +31,7 @@ CMake	      3.22+
 
 版本管理：Git
 
-# 系统架构
+### 系统架构
 
 仿真层：物理仿真，URDF机器人模型，多传感器仿真插件
 
@@ -42,7 +42,7 @@ CMake	      3.22+
 测试层：Rviz2可视化，自动化测试脚本
 
 
-# 5 类作业场景
+### 5 类作业场景
 
 场景 1：静态地图导航  Nav2 全局路径规划 + 纯定位
 
@@ -55,34 +55,33 @@ CMake	      3.22+
 场景 5：多任务连续执行  状态机串联：导航→识别→抓取→放置→复位循环
 
 
-### 安装依赖
+## 安装依赖
 
-# 安装 ROS2 基础包
+#### 安装 ROS2 基础包
 sudo apt update
 sudo apt install ros-humble-desktop ros-humble-ros-gz-bridge ros-humble-gz-ros2-control
-
-# 安装 Nav2 和 MoveIt2
+### 安装 Nav2 和 MoveIt2
 sudo apt install ros-humble-nav2-bringup ros-humble-moveit ros-humble-moveit-planners-ompl
 
-# 安装 Python 依赖
+### 安装 Python 依赖
 pip3 install onnxruntime opencv-python numpy ultralytics
 
 
 
-### 克隆与编译
+## 克隆与编译
 
-# 创建工作空间
+### 创建工作空间
 mkdir -p ~/AMR-Operate-System/src
 cd ~/AMR-Operate-System/src
 
-# 克隆仓库
+### 克隆仓库
 git clone https://github.com/ElaraW/AMR-Operate-System.git
 
-# 返回工作空间根目录并编译
+### 返回工作空间根目录并编译
 colcon build --symlink-install
 source install/setup.bash
 
-# 运行仿真
+### 运行仿真
 ros2 launch industry_manufacturing_line system_start.launch.py
 
 
