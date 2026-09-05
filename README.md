@@ -76,7 +76,7 @@ mkdir -p ~/AMR-Operate-System/src
 cd ~/AMR-Operate-System/src
 
 # 克隆仓库
-git clone https://github.com/
+git clone https://github.com/ElaraW/AMR-Operate-System.git
 
 # 返回工作空间根目录并编译
 colcon build --symlink-install
